@@ -15,7 +15,11 @@ const count = ref(0)
   <h1>{{ props.msg }}</h1>
 
   <div class="card">
-    <button type="button" class="bg-brand-main" @click="count++">
+    <button
+      type="button"
+      class="bg-brand-main md:text-yellow-400"
+      @click="count++"
+    >
       count is {{ count }}
     </button>
     <p>

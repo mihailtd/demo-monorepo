@@ -9,7 +9,12 @@
     {
       "files": "*.vue",
       "parser": "vue-eslint-parser",
-      "extends": ["plugin:vue/vue3-recommended", "eslint:recommended", "plugin:import/recommended", "prettier"],
+      "extends": [
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "prettier"
+      ],
       "plugins": ["vue", "@typescript-eslint", "simple-import-sort"],
       "rules": {
         // FIXME: Causes problems with imports from Vue
@@ -29,6 +34,7 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/first": "error",
+    "import/named": "off",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error"
   }
