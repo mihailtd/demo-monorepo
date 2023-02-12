@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "lib": ["ESNext", "esnext.asynciterable"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "watchOptions": {
+    "excludeDirectories": ["node_modules", "dist"]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "rootDir": "."
+    }
+  }
+}

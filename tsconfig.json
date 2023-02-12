@@ -17,6 +17,9 @@
       "path": "@app/client"
     },
     {
+      "path": "@app/server"
+    },
+    {
       "path": "packages/ui-lib"
     }
   ]

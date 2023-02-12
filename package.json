@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "pnpm --filter @demo/client",
+    "server": "pnpm --filter @demo/server",
     "lib": "pnpm --filter @demo/ui-lib",
     "dev": "pnpm --recursive --parallel --stream run dev"
   },
