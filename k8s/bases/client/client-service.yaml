@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: client
+  labels:
+    app: client
+spec:
+  type: ClusterIP
+  selector:
+    app: client
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+    protocol: TCP

@@ -1,0 +1,5 @@
+namespace: demo
+
+resources:
+  - ./server.yaml
+  - ./server-service.yaml

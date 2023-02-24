@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 @app/server/tsconfig.tsbuildinfo
+
+
+# Ignore DevSpace cache and log folder
+.devspace/

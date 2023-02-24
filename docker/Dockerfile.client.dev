@@ -1,0 +1,17 @@
+FROM node:18-alpine
+
+ENV NODE_ENV=development
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
+
+COPY ./@app/client ./@app/client
+COPY ./packages/tailwind-config ./packages/tailwind-config
+COPY ./packages/ui-lib ./packages/ui-lib
+
+RUN npm install -g pnpm
+RUN pnpm install
+
+EXPOSE 8000
+ENTRYPOINT [ "pnpm", "client", "dev" ]

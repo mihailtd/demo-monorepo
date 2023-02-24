@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue + K8S" />
   <MyBrandButton>test button</MyBrandButton>
   <MyBrandInput />
 </template>

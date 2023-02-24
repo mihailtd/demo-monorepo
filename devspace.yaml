@@ -1,0 +1,105 @@
+version: v2beta1
+name: demo-monorepo
+
+# This is a list of `pipelines` that DevSpace can execute (you can define your own)
+pipelines:
+  # You can run this pipeline via `devspace deploy` (or `devspace run-pipeline deploy`)
+  deploy:
+    run: |-
+      run_dependencies --all                            # 1. Deploy any projects this project needs (see "dependencies")
+      ensure_pull_secrets --all                         # 2. Ensure pull secrets
+      build_images --all -t $(git describe --always)    # 3. Build, tag (git commit hash) and push all images (see "images")
+      create_deployments --all                          # 4. Deploy Helm charts and manifests specfied as "deployments"
+  # This is the pipeline for the main command: `devspace dev` (or `devspace run-pipeline dev`)
+  dev:
+    run: |-
+      run_dependencies --all       # 1. Deploy any projects this project needs (see "dependencies")
+      ensure_pull_secrets --all    # 2. Ensure pull secrets
+      build_images --all -t $(git describe --always)    # 3. Build, tag (git commit hash) and push all images (see "images")
+      create_deployments --all     # 3. Deploy Helm charts and manifests specfied as "deployments"
+      start_dev --all              # 4. Start dev mode "app" (see "dev" section)
+
+# This is a list of `deployments` that DevSpace can create for this project
+deployments:
+  app:
+    # This deployment uses `kubectl` but you can also define `helm` deployments
+    kubectl:
+      manifests:
+        - ./k8s
+      kustomize: true
+
+images:
+  client-dev:
+    image: client-dev
+    tags:
+      - ${DEVSPACE_GIT_COMMIT}
+    dockerfile: ./docker/Dockerfile.client.dev
+    context: ./
+    rebuildStrategy: always
+    skipPush: true
+  server-dev:
+    image: server-dev
+    tags:
+      - ${DEVSPACE_GIT_COMMIT}
+    dockerfile: ./docker/Dockerfile.server.dev
+    context: ./
+    rebuildStrategy: always
+    skipPush: true
+
+# This is a list of `dev` containers that are based on the containers created by your deployments
+dev:
+  client-dev:
+    imageSelector: client-dev
+    logs:
+      enabled: true
+      lastLines: 100
+    ports:
+      - port: "8000"
+    open:
+      - url: http://localhost:8000
+    sync:
+      - path: ./@app/client
+        excludePaths:
+          - "node_modules"
+          - "dist"
+        uploadExcludePaths:
+          - "node_modules"
+          - "dist"
+      - path: ./packages/tailwind-config
+        excludePaths:
+          - "node_modules"
+        uploadExcludePaths:
+          - "node_modules"
+      - path: ./packages/ui-lib/dist
+  server-dev:
+    imageSelector: server-dev
+    logs:
+      enabled: true
+      lastLines: 100
+    ports:
+      - port: "3000"
+    open:
+      - url: http://localhost:3000
+    sync:
+      - path: ./@app/server
+        excludePaths:
+          - "node_modules"
+          - "dist"
+        uploadExcludePaths:
+          - "node_modules"
+          - "dist"
+
+# Use the `commands` section to define repeatable dev workflows for this project 
+commands:
+  migrate-db:
+    command: |-
+      echo 'This is a cross-platform, shared command that can be used to codify any kind of dev task.'
+      echo 'Anyone using this project can invoke it via "devspace run migrate-db"'
+
+# Define dependencies to other projects with a devspace.yaml
+# dependencies:
+#   api:
+#     git: https://...  # Git-based dependencies
+#     tag: v1.0.0
+#   ui:
+#     path: ./ui        # Path-based dependencies (for monorepos)

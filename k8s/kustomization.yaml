@@ -1,0 +1,5 @@
+namespace: demo
+
+bases:
+  - ./bases/server
+  - ./bases/client
