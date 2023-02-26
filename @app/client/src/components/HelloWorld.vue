@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const props = defineProps({
   msg: {
     type: String,
     default: 'HelloWorld',
   },
-})
+});
 
-const count = ref(0)
+const count = ref(0);
 </script>
 
 <template>
