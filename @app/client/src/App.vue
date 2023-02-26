@@ -9,8 +9,11 @@ import HelloWorld from './components/HelloWorld.vue';
 
 <template>
   <HelloWorld msg="Vite + Vue + K8S" />
-  <MyBrandButton>test button</MyBrandButton>
-  <MyBrandInput />
+  <div class="mt-12 flex flex-col px-12">
+    <h2 class="mb-4 text-xl">Custom Components From UI Library:</h2>
+    <MyBrandButton class="w-48">test button</MyBrandButton>
+    <MyBrandInput class="mt-6 w-64" />
+  </div>
 </template>
 
 <style scoped>
