@@ -16,6 +16,10 @@
   "dependencies": {
     "vue": "^3.2.41"
   },
+  "peerDependencies": {
+    "@demo/tailwind-config": "^0.0.0",
+    "vue": "^3.2.41"
+  },
   "devDependencies": {
     "@demo/tailwind-config": "workspace:^0.0.0",
     "@vitejs/plugin-vue": "^3.2.0",
