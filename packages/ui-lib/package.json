@@ -2,12 +2,16 @@
   "name": "@demo/ui-lib",
   "private": true,
   "version": "0.0.0",
+  "repository": "https://github.com/mihailtd/demo-monorepo.git",
   "type": "module",
   "module": "./dist/ui-lib.js",
   "types": "./dist/main.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "@mihailtd:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
@@ -18,7 +22,7 @@
   },
   "peerDependencies": {
     "@demo/tailwind-config": "^0.0.0",
-    "vue": "^3.2.47"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@demo/tailwind-config": "workspace:^0.0.0",
