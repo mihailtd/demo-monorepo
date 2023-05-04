@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: pnpm i
       - run: pnpm lib build
       - run: cd ./packages/ui-lib
       - run: pnpm publish
