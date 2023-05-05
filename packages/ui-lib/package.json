@@ -2,7 +2,9 @@
   "name": "@demo/ui-lib",
   "private": true,
   "version": "0.0.0",
-  "repository": "https://github.com/mihailtd/demo-monorepo.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mihailtd/demo-monorepo.git"
   "type": "module",
   "module": "./dist/ui-lib.js",
   "types": "./dist/main.d.ts",
