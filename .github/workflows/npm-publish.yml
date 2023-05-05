@@ -9,6 +9,18 @@ on:
     types: [created, edited]
 
 jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: pnpm i
+      - run: pnpm lib build
   publish-npm:
     runs-on: ubuntu-latest
     steps:
@@ -20,8 +32,6 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://npm.pkg.github.com'
-      - run: pnpm i
-      - run: pnpm lib build
       - run: pnpm publish --no-git-checks
         working-directory: ./packages/ui-lib
         env:
