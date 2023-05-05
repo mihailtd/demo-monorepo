@@ -22,6 +22,6 @@ jobs:
       - run: pnpm i
       - run: pnpm lib build
       - run: cd ./packages/ui-lib
-      - run: pnpm publish
+      - run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
