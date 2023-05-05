@@ -21,11 +21,7 @@ jobs:
           node-version: 18
       - run: pnpm i
       - run: pnpm lib build
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://npm.pkg.github.com'
-      - run: pnpm publish --no-git-checks
+      - run: pnpm publish --no-git-checks --registry https://npm.pkg.github.com
         working-directory: ./packages/ui-lib
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
