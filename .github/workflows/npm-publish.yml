@@ -9,7 +9,7 @@ on:
     types: [created, edited]
 
 jobs:
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,6 +21,11 @@ jobs:
           version: 6.0.2
       - run: pnpm i
       - run: pnpm lib build
+  publish-npm:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
