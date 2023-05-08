@@ -1,4 +1,4 @@
-import components from '@demo/ui-lib';
+import components from '@mihailtd/ui-lib';
 
 // alternatively if the library does not export a plugin, I could create one
 const UiLibPlugin = {

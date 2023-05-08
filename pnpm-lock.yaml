@@ -44,7 +44,7 @@ importers:
       '@demo/tailwind-config':
         specifier: workspace:^0.0.0
         version: link:../../packages/tailwind-config
-      '@demo/ui-lib':
+      '@mihailtd/ui-lib':
         specifier: workspace:^0.0.0
         version: link:../../packages/ui-lib
       '@vitejs/plugin-vue':
