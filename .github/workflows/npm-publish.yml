@@ -23,6 +23,8 @@ jobs:
       - run: pnpm lib build
   publish-npm:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     needs: build
     steps:
       - uses: actions/checkout@v3
