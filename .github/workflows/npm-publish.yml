@@ -29,11 +29,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://npm.pkg.github.com'
       - uses: pnpm/action-setup@v2
         with:
           version: 6.0.2
-      - run: pnpm publish --no-git-checks
+      - run: pnpm publish --no-git-checks --registry=https://npm.pkg.github.com
         working-directory: ./packages/ui-lib
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
