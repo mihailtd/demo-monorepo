@@ -21,6 +21,11 @@ jobs:
           version: 6.0.2
       - run: pnpm i
       - run: pnpm lib build
+      - name: save build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: ./packages/ui-lib/dist
   publish-npm:
     runs-on: ubuntu-latest
     permissions:
@@ -35,6 +40,11 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 6.0.2
+      - name: download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: ./packages/ui-lib/dist
       - run: pnpm publish --no-git-checks --registry=https://npm.pkg.github.com
         working-directory: ./packages/ui-lib
         env:
