@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "catalog:"
   },
   "devDependencies": {
     "@demo/tailwind-config": "workspace:^0.0.0",
     "@mihailtd/ui-lib": "workspace:^0.0.0",
-    "@vitejs/plugin-vue": "^4.2.1",
-    "vite": "^4.3.3",
-    "vue-tsc": "^1.6.2"
+    "@vitejs/plugin-vue": "^5.1.0",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
   }
 }
